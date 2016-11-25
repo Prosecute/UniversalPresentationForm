@@ -1,0 +1,15 @@
+package cz.cvut.czm.upf.core.events.mouse;
+///////////////////////////////////////////////////////////////////////////////
+//
+//Author: Jiri Fryc
+//
+//Licence: AGPL v3
+//
+//This file is part of upf, which is part of Prosecutor. 
+///////////////////////////////////////////////////////////////////////////////
+
+
+public interface MouseButtonListener {
+
+    void invoke(MouseButtonEvent e);
+}
