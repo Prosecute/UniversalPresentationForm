@@ -10,4 +10,7 @@ package cz.cvut.czm.upf.core.media;
 
 
 public class Pen {
+
+    public float thickness;
+    public Brush brush;
 }

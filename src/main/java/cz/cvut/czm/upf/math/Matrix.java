@@ -11,7 +11,7 @@ package cz.cvut.czm.upf.math;
 
 public class Matrix {
 
-    private float[][] data;
+    protected float[][] data;
 
     public Matrix(int size)
     {

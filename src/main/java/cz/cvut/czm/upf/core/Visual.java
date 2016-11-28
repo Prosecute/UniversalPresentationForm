@@ -10,7 +10,7 @@ package cz.cvut.czm.upf.core;
 
 
 import cz.cvut.czm.upf.core.dependency.DependencyObject;
-import cz.cvut.czm.upf.core.media.Point;
+import cz.cvut.czm.upf.core.media.*;
 import cz.cvut.czm.upf.core.media.transforms.Transform;
 
 import java.util.ArrayList;
@@ -21,7 +21,9 @@ import java.util.Set;
 public abstract class Visual<T extends Visual> extends DependencyObject<T> {
 
     private Visual visualParrent;
-    private List<Visual> childs=new ArrayList<Visual>();
+    private List<Visual> visualChilds=new ArrayList<Visual>();
+    private Image buffer;
+    private Rect renderRect;
 
     protected Visual getVisualParrent()
     {
@@ -35,16 +37,16 @@ public abstract class Visual<T extends Visual> extends DependencyObject<T> {
     }
     Visual getVisualChild(int index)
     {
-        return childs.get(index);
+        return visualChilds.get(index);
     }
     protected int getVisualChildCount()
     {
-        return childs.size();
+        return visualChilds.size();
     }
     protected T addVisualChild(Visual visual)
     {
-        if(!childs.contains(visual))
-            childs.add(visual);
+        if(!visualChilds.contains(visual))
+            visualChilds.add(visual);
         return getThis();
     }
 
@@ -73,4 +75,18 @@ public abstract class Visual<T extends Visual> extends DependencyObject<T> {
     {
         return null;
     }
+
+
+    public RenderJob.RenderJobManager Render = new RenderJob.RenderJobManager();
+
+    protected void render(DrawingContext dc)
+    {
+        if(buffer==null)
+            buffer=dc.GetConfiguration().createImage((int)renderRect.width,(int)renderRect.height);
+        Render.render(buffer.getDrawingContext());
+        dc.DrawImage(null,buffer,renderRect);
+        for(Visual visual:visualChilds)
+            visual.render(dc);
+    }
+
 }

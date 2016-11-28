@@ -9,13 +9,20 @@ package cz.cvut.czm.upf;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.connectors.awt.FrameConnector;
-import cz.cvut.czm.upf.core.FrameworkElement;
-
-import java.awt.*;
-
-public abstract class Window extends FrameworkElement{
+import cz.cvut.czm.upf.connectors.awt.AwtWindow;
+import cz.cvut.czm.upf.presentation.PresentationElement;
+import cz.cvut.czm.upf.presentation.control.content.ContentControl;
 
 
+public abstract class Window<T extends Window> extends ContentControl<T> {
 
+
+
+    public static Window createAwtWindow()
+    {
+        return new AwtWindow();
+    }
+
+    public abstract T setTitle(String title);
+    public abstract String getTitle();
 }

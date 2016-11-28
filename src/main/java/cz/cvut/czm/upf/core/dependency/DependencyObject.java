@@ -22,11 +22,11 @@ public class DependencyObject<T extends DependencyObject> extends DispatcherObje
     public T InvalidateProperty(DependencyProperty property)
     {
         TODO.c();
-        return GetThis();
+        return getThis();
     }
     public T SetCurrentValue(DependencyProperty property,Object object)
     {
         TODO.c();
-        return GetThis();
+        return getThis();
     }
 }

@@ -13,7 +13,7 @@ import cz.cvut.czm.upf.core.io.InputDevice;
 
 import java.util.Date;
 
-public class InputEvent {
+public class InputEvent extends Event {
     public final InputDevice device;
     public final Date timestamp;
 

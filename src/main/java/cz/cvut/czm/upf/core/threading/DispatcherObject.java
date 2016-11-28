@@ -27,6 +27,6 @@ public abstract class DispatcherObject<T extends DispatcherObject> extends Fluen
     {
         if(!CheckAccess())
             throw new InvalidOperationException();
-        return GetThis();
+        return getThis();
     }
 }

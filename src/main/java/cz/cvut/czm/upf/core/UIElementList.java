@@ -9,11 +9,8 @@ package cz.cvut.czm.upf.core;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.layouts.Panel;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class UIElementList extends ArrayList<UIElement> {
     UIElement parent;
