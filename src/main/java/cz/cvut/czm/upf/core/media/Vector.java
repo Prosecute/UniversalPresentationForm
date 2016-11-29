@@ -12,7 +12,7 @@ package cz.cvut.czm.upf.core.media;
 import cz.cvut.czm.upf.core.FluentObject;
 
 public class Vector<T extends Vector> extends FluentObject<T> {
-    float x,y;
+    public volatile float x,y;
 
     public Vector()
     {
@@ -57,6 +57,17 @@ public class Vector<T extends Vector> extends FluentObject<T> {
     public T getInversed()
     {
         return (T)new Vector(-this.x,-this.y);
+    }
+
+    public static Vector createSmallestByAxis(Vector... vectors)
+    {
+        float w,h;
+        for(Vector vector:vectors)
+        {
+            w=w<vector.x?w:vector.x;
+            h=h<vector.y?h:vector.y;
+        }
+        return new Vector(w,h);
     }
 
     public boolean compare(Vector B)

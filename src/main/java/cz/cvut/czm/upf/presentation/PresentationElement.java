@@ -11,6 +11,8 @@ package cz.cvut.czm.upf.presentation;
 
 import cz.cvut.czm.upf.core.UIElement;
 import cz.cvut.czm.upf.core.dependency.DependencyObject;
+import cz.cvut.czm.upf.core.media.*;
+import cz.cvut.czm.upf.core.media.Vector;
 
 import java.util.*;
 
@@ -27,5 +29,33 @@ public class PresentationElement<T extends PresentationElement> extends UIElemen
     {
         return parent;
     }
+
+
+    //region Sizing
+
+    public volatile Float width,height,maxwidth,minwidth,maxheight,minheight;
+    public volatile Margin margin;
+
+    @Override
+    protected final Vector measure(Vector availableSize) {
+        float x=availableSize.x;
+        float y=availableSize.y;
+        if(margin==null) {}
+        if(margin.left!=null && margin.right!=null)
+            x = x - margin.left - margin.right;
+        else if(margin.left==null && margin.right==null)
+            x = maxwidth!=null && x>maxwidth?maxwidth:( minwidth!=null && x<minwidth)?minwidth:(width!=null)?width:x;
+        else if(margin.left!=null)
+
+    }
+    private boolean overwriteMeasure=true,overwriteArrange=true;
+
+    @Override
+    protected final Rect arrange(Rect desiredLocation) {
+
+    }
+    protected final Rect arangeOverwrite(Rect desiredLocation) { overwriteArrange=false; return desiredLocation; }
+    protected final Vector measureOverwrite(Vector availableSize) {overwriteMeasure=false; return availableSize;}
+    //endregion
 
 }

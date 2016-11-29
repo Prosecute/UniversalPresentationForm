@@ -11,15 +11,13 @@ package cz.cvut.czm.upf.core;
 
 import cz.cvut.czm.upf.core.events.Event;
 import cz.cvut.czm.upf.core.events.EventListener;
-import cz.cvut.czm.upf.core.events.EventManager;
 import cz.cvut.czm.upf.core.events.keyboard.KeyEvent;
 import cz.cvut.czm.upf.core.events.mouse.MouseButtonEvent;
 import cz.cvut.czm.upf.core.events.mouse.MouseEvent;
 import cz.cvut.czm.upf.core.events.mouse.MouseWheelEvent;
-import cz.cvut.czm.upf.core.media.DrawingContext;
-
-import java.util.Collections;
-import java.util.Enumeration;
+import cz.cvut.czm.upf.core.geometry.Geometry;
+import cz.cvut.czm.upf.core.media.Rect;
+import cz.cvut.czm.upf.core.media.Vector;
 
 public class UIElement<T extends UIElement> extends Visual<T> {
 
@@ -40,18 +38,33 @@ public class UIElement<T extends UIElement> extends Visual<T> {
     public EventListener<Event> FocusGain;
     //endregion
 
-    public T addChild()
+
+    //region Sizing
+    protected Geometry clip;
+    public T setClip(Geometry clip) {this.clip=clip; return getThis();}
+    public Geometry getClip() {return this.clip;}
+
+    protected Vector measuredSize;
+    protected Rect bounds;
+    public void measurePass(Vector availibleSize)
     {
-        return getThis();
+        if(!visible)
+            measuredSize=new Vector();
+        else if(clip==null)
+            measuredSize=Vector.createSmallestByAxis(clip.getBounds().getSize(),availibleSize);
+        else
+            measuredSize=availibleSize;
+        availibleSize = measure(availibleSize);
     }
-    public T removeChild()
+    protected Vector measure(Vector availibleSize) { return availibleSize;}
+
+    public void arrangePass(Rect desiredLocation)
     {
-        return getThis();
+
+        bounds=arrange(bounds);
     }
-    public Enumeration<UIElement> childs()
-    {
-        return Collections.emptyEnumeration();
-    }
+    protected Rect arrange(Rect desiredLocation) {return  desiredLocation;}
+    //endregion
 
 
     protected boolean visible = true;

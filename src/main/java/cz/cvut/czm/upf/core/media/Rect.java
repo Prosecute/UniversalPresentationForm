@@ -91,5 +91,6 @@ public class Rect {
     {
         return new Vector(width,height);
     }
+    public Rect copy(){return new Rect(x,y,width,height);}
 
 }
