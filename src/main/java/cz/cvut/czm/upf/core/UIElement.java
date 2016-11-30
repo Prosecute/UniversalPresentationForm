@@ -45,6 +45,12 @@ public class UIElement<T extends UIElement> extends Visual<T> {
     public Geometry getClip() {return this.clip;}
 
     protected Vector measuredSize;
+
+    public Vector getMeasuredSize()
+    {
+        return measuredSize;
+    }
+
     protected Rect bounds;
     public void measurePass(Vector availibleSize)
     {
@@ -54,16 +60,15 @@ public class UIElement<T extends UIElement> extends Visual<T> {
             measuredSize=Vector.createSmallestByAxis(clip.getBounds().getSize(),availibleSize);
         else
             measuredSize=availibleSize;
-        availibleSize = measure(availibleSize);
+        measure(availibleSize);
     }
-    protected Vector measure(Vector availibleSize) { return availibleSize;}
+    protected void measure(Vector availibleSize) {}
 
     public void arrangePass(Rect desiredLocation)
     {
-
-        bounds=arrange(bounds);
+        arrange(bounds);
     }
-    protected Rect arrange(Rect desiredLocation) {return  desiredLocation;}
+    protected void arrange(Rect desiredLocation) {}
     //endregion
 
 

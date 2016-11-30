@@ -10,23 +10,28 @@ package cz.cvut.czm.upf.core.media;
 
 
 public class Color {
-    private int color;
+    protected byte[] color=new byte[4];
 
     public Color(int r,int g,int b)
     {
-        this.color=toIntColor(r,g,b);
+        this.color=tobyteArray(r,g,b,0xFF);
     }
     public Color(int r,int g,int b,int a)
     {
-        this.color=toIntColor(r,g,b,a);
+        this.color=tobyteArray(r,g,b,a);
     }
     public Color(String hex)
     {
 
     }
-    public Color(int rgba)
+    public Color(byte[] rgba)
     {
         this.color=rgba;
+    }
+
+    public Color(int rgba)
+    {
+        this.color=tobyteArray(rgba);
     }
 
     public Color copy()
@@ -36,19 +41,23 @@ public class Color {
 
     public int red()
     {
-        return color >> 24 & 0xFF;
+        return color[0];
     }
     public int green()
     {
-        return color >> 16 & 0xFF;
+        return color[1];
     }
     public int blue()
     {
-        return color >> 8 & 0xFF;
+        return color[2];
     }
     public int alpha()
     {
-        return color & 0xFF;
+        return color[3];
+    }
+    public byte[] get()
+    {
+        return color;
     }
     public Color set(int r,int g,int b,int a)
     {
@@ -61,6 +70,14 @@ public class Color {
 
 
 
+    public static byte[] tobyteArray(int r,int g,int b,int a)
+    {
+        return new byte[]{(byte)r,(byte)g,(byte)b,(byte)a};
+    }
+    public static byte[] tobyteArray(int rgba)
+    {
+        return new byte[]{(byte)(rgba >> 24 & 0xFF),(byte)(rgba >> 16 & 0xFF),(byte)(rgba >> 8 & 0xFF),(byte)(rgba & 0xFF)};
+    }
     public static int toIntColor(byte r,byte g,byte b,byte a)
     {
         int ret= r;

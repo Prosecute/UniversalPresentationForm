@@ -61,7 +61,7 @@ public class Vector<T extends Vector> extends FluentObject<T> {
 
     public static Vector createSmallestByAxis(Vector... vectors)
     {
-        float w,h;
+        float w=0,h=0;
         for(Vector vector:vectors)
         {
             w=w<vector.x?w:vector.x;

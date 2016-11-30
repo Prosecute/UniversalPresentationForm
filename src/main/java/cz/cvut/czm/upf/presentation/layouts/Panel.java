@@ -9,6 +9,8 @@ package cz.cvut.czm.upf.presentation.layouts;
 ///////////////////////////////////////////////////////////////////////////////
 
 
+import cz.cvut.czm.upf.core.media.Rect;
+import cz.cvut.czm.upf.core.media.Vector;
 import cz.cvut.czm.upf.presentation.PresentationElement;
 import cz.cvut.czm.upf.core.UIElement;
 import cz.cvut.czm.upf.core.UIElementList;
@@ -25,5 +27,15 @@ public abstract class Panel<T extends Panel> extends PresentationElement<T> {
     {
         list.add(element);
         return getThis();
+    }
+
+    @Override
+    protected void measureOverwrite(Vector availableSize) {
+        super.measureOverwrite(availableSize);
+    }
+
+    @Override
+    protected Vector arrangeOverwrite(Vector desiredLocation) {
+        return super.arrangeOverwrite(desiredLocation);
     }
 }

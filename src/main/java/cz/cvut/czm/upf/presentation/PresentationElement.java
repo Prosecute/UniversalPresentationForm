@@ -37,7 +37,7 @@ public class PresentationElement<T extends PresentationElement> extends UIElemen
     public volatile Margin margin;
 
     @Override
-    protected final Vector measure(Vector availableSize) {
+    protected final void measure(Vector availableSize) {
         float x=availableSize.x;
         float y=availableSize.y;
         if(margin==null) {}
@@ -45,17 +45,16 @@ public class PresentationElement<T extends PresentationElement> extends UIElemen
             x = x - margin.left - margin.right;
         else if(margin.left==null && margin.right==null)
             x = maxwidth!=null && x>maxwidth?maxwidth:( minwidth!=null && x<minwidth)?minwidth:(width!=null)?width:x;
-        else if(margin.left!=null)
+        else if(margin.left!=null){}
 
     }
-    private boolean overwriteMeasure=true,overwriteArrange=true;
 
     @Override
-    protected final Rect arrange(Rect desiredLocation) {
+    protected final void arrange(Rect desiredLocation) {
 
     }
-    protected final Rect arangeOverwrite(Rect desiredLocation) { overwriteArrange=false; return desiredLocation; }
-    protected final Vector measureOverwrite(Vector availableSize) {overwriteMeasure=false; return availableSize;}
+    protected Vector arrangeOverwrite(Vector finalSize) { return finalSize;}
+    protected void measureOverwrite(Vector availableSize) {}
     //endregion
 
 }

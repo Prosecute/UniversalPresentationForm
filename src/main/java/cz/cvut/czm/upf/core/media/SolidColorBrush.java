@@ -12,4 +12,8 @@ package cz.cvut.czm.upf.core.media;
 public class SolidColorBrush extends Brush {
     public Color color;
 
+    @Override
+    public String type() {
+        return "solidColor";
+    }
 }

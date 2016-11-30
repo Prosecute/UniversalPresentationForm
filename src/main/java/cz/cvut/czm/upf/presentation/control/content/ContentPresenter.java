@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.core.media;
+package cz.cvut.czm.upf.presentation.control.content;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,6 +9,8 @@ package cz.cvut.czm.upf.core.media;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-public abstract class Brush {
-    public abstract String type();
+import cz.cvut.czm.upf.presentation.PresentationElement;
+
+public class ContentPresenter<T extends ContentPresenter> extends PresentationElement<T> {
+
 }
