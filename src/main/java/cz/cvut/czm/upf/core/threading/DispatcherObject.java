@@ -10,14 +10,22 @@ package cz.cvut.czm.upf.core.threading;
 
 
 import cz.cvut.czm.upf.core.FluentObject;
+import cz.cvut.czm.upf.core.Visual;
 
 public abstract class DispatcherObject<T extends DispatcherObject> extends FluentObject<T> {
     public final Dispatcher dispatcher;
 
+    //region Constructors
+    public DispatcherObject(DispatcherObject objectTocopy)
+    {
+        super((T)objectTocopy);
+        dispatcher = Dispatcher.CurrentDispatcher();
+    }
     protected DispatcherObject()
     {
         dispatcher = Dispatcher.CurrentDispatcher();
     }
+    //endregion
 
     public boolean CheckAccess()
     {

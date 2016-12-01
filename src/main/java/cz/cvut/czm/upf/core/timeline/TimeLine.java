@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.core;
+package cz.cvut.czm.upf.core.timeline;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,20 +9,7 @@ package cz.cvut.czm.upf.core;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-public class FluentObject<T extends FluentObject> extends Object {
+import cz.cvut.czm.upf.core.Animatable;
 
-    public FluentObject()
-    {
-
-    }
-    public FluentObject(T objectToCopy)
-    {
-
-    }
-
-    public T getThis()
-    {
-        return (T)this;
-    }
-
+public class TimeLine<T extends TimeLine> extends Animatable<T> {
 }

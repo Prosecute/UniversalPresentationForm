@@ -16,15 +16,18 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 import cz.cvut.czm.upf.Window;
+import cz.cvut.czm.upf.framework.control.TextBox;
+import cz.cvut.czm.upf.framework.layouts.Canvas;
 
 public class OpenGLWindow<T extends OpenGLWindow> extends Window<T> {
 
+    public final GLWindow window;
 
     public OpenGLWindow()
     {
         GLProfile profile = GLProfile.getDefault();
         GLCapabilities cap = new GLCapabilities(profile);
-        GLWindow window = GLWindow.create(cap);
+        this.window = GLWindow.create(cap);
 
         // Create a animator that drives canvas' display() at the specified FPS.
         final FPSAnimator animator = new FPSAnimator(window, 60, true);
@@ -61,6 +64,8 @@ public class OpenGLWindow<T extends OpenGLWindow> extends Window<T> {
     public static void main(String... args)
     {
         OpenGLWindow win=new OpenGLWindow();
+        win.setContent(new Canvas()
+                .addChild(new TextBox()));
         win.setVisible(true);
     }
 }

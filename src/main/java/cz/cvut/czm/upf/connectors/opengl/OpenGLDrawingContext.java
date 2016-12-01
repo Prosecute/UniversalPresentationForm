@@ -9,6 +9,7 @@ package cz.cvut.czm.upf.connectors.opengl;
 ///////////////////////////////////////////////////////////////////////////////
 
 
+import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
@@ -18,21 +19,23 @@ import cz.cvut.czm.upf.core.media.*;
 public class OpenGLDrawingContext extends DrawingContext {
 
     GL2 gl;
+    OpenGLDrawingConfiguration conf;
 
-    protected OpenGLDrawingContext(GL2 gl,float x, float y, float width, float height) {
+    protected OpenGLDrawingContext(GL gl, float x, float y, float width, float height) {
         super(x, y, width, height);
-        this.gl=gl;
+        this.gl=gl.getGL2();
         gl.glScissor(this.x,this.y,this.width,this.height);
+        conf=new OpenGLDrawingConfiguration(this);
     }
 
     @Override
     public DrawingConfiguration GetConfiguration() {
-        return null;
+        return conf;
     }
 
     @Override
     public DrawingContext Clip(Geometry geometry) {
-        return null;
+        return this;
     }
 
     private void prepBrush(Brush brush)
@@ -54,6 +57,17 @@ public class OpenGLDrawingContext extends DrawingContext {
     public DrawingContext DrawEllipse(Brush brush, Pen pen, Point point, float width, float height) {
 
         return null;
+    }
+    private final static double DEG2RAD = 3.14159f/180.0f;
+    private void drawEllipse(float x,float y,double w,double h)
+    {
+        gl.glBegin(GL2.GL_LINE_LOOP);
+        for(int i=0;i<360;i++)
+        {
+            double deg=DEG2RAD*i;
+            gl.glVertex2d(Math.cos(deg)*x,Math.sin(deg)*y);
+        }
+        gl.glEnd();
     }
 
     @Override

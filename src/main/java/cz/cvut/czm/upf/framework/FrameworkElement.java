@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.presentation;
+package cz.cvut.czm.upf.framework;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -14,9 +14,7 @@ import cz.cvut.czm.upf.core.dependency.DependencyObject;
 import cz.cvut.czm.upf.core.media.*;
 import cz.cvut.czm.upf.core.media.Vector;
 
-import java.util.*;
-
-public class PresentationElement<T extends PresentationElement> extends UIElement<T> {
+public class FrameworkElement<T extends FrameworkElement> extends UIElement<T> {
 
     private volatile DependencyObject parent;
 
@@ -37,7 +35,7 @@ public class PresentationElement<T extends PresentationElement> extends UIElemen
     public volatile Margin margin;
 
     @Override
-    protected final void measure(Vector availableSize) {
+    protected final void measurePass(Vector availableSize) {
         float x=availableSize.x;
         float y=availableSize.y;
         if(margin==null) {}
@@ -50,11 +48,11 @@ public class PresentationElement<T extends PresentationElement> extends UIElemen
     }
 
     @Override
-    protected final void arrange(Rect desiredLocation) {
+    protected final void arrangePass(Rect desiredLocation) {
 
     }
     protected Vector arrangeOverwrite(Vector finalSize) { return finalSize;}
-    protected void measureOverwrite(Vector availableSize) {}
+    protected Vector measureOverwrite(Vector availableSize) { return availableSize;}
     //endregion
 
 }

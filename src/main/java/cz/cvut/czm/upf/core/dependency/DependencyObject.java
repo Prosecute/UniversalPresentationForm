@@ -10,11 +10,19 @@ package cz.cvut.czm.upf.core.dependency;
 
 
 import cz.cvut.czm.upf.TODO;
+import cz.cvut.czm.upf.core.Visual;
 import cz.cvut.czm.upf.core.threading.DispatcherObject;
 
 public class DependencyObject<T extends DependencyObject> extends DispatcherObject<T> {
 
 
+    //region Constructors
+    public DependencyObject(){}
+    public DependencyObject(DependencyObject objectTocopy)
+    {
+        super(objectTocopy);
+    }
+    //endregion
     public Object GetValue(DependencyProperty property)
     {
         return TODO.create(Object.class);

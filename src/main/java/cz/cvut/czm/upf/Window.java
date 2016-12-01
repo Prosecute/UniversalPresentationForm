@@ -10,8 +10,7 @@ package cz.cvut.czm.upf;
 
 
 import cz.cvut.czm.upf.connectors.awt.AwtWindow;
-import cz.cvut.czm.upf.presentation.PresentationElement;
-import cz.cvut.czm.upf.presentation.control.content.ContentControl;
+import cz.cvut.czm.upf.framework.control.content.ContentControl;
 
 
 public abstract class Window<T extends Window> extends ContentControl<T> {

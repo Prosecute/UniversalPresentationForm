@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.presentation.control.content;
+package cz.cvut.czm.upf.core.media;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,8 +9,15 @@ package cz.cvut.czm.upf.presentation.control.content;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.presentation.PresentationElement;
+public final class Colors {
+    private Colors(){}
 
-public class ContentPresenter<T extends ContentPresenter> extends PresentationElement<T> {
-
+    public static Color white()
+    {
+        return new Color(1,1,1);
+    }
+    public static Color lightSkyBlue()
+    {
+        return new Color(0.529f, 0.808f, 0.980f);
+    }
 }

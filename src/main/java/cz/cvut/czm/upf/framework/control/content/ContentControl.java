@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.presentation.control.content;
+package cz.cvut.czm.upf.framework.control.content;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,23 +9,22 @@ package cz.cvut.czm.upf.presentation.control.content;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.core.media.Rect;
+import cz.cvut.czm.upf.core.UIElement;
 import cz.cvut.czm.upf.core.media.Vector;
-import cz.cvut.czm.upf.presentation.control.Control;
+import cz.cvut.czm.upf.framework.control.Control;
 
 public class ContentControl<T extends ContentControl> extends Control<T> {
 
 
     //region Content
-    private Object content;
-    private ContentPresenter presenter;
+    private UIElement content;
 
-    public T setContent(Object content)
+    public T setContent(UIElement content)
     {
         this.content=content;
         return getThis();
     }
-    public Object getContent()
+    public UIElement getContent()
     {
         return this.content;
     }
@@ -36,12 +35,12 @@ public class ContentControl<T extends ContentControl> extends Control<T> {
 
     @Override
     protected void measureOverwrite(Vector availableSize) {
-        if(presenter==null)
+        if(content==null)
         {
 
         }
-        presenter.measurePass(availableSize);
-        measuredSize=presenter.getMeasuredSize();
+        content.measurePass(availableSize);
+        measuredSize=content.getMeasuredSize();
     }
 
     @Override

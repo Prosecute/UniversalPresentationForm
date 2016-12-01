@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.presentation.control.items;
+package cz.cvut.czm.upf.framework.control;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,7 +9,8 @@ package cz.cvut.czm.upf.presentation.control.items;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.presentation.control.Control;
+import cz.cvut.czm.upf.framework.FrameworkElement;
 
-public class ItemsControl<T extends ItemsControl> extends Control<T> {
+
+public class Control<T extends Control> extends FrameworkElement<T> {
 }

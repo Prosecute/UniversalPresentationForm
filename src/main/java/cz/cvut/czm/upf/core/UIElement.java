@@ -16,10 +16,20 @@ import cz.cvut.czm.upf.core.events.mouse.MouseButtonEvent;
 import cz.cvut.czm.upf.core.events.mouse.MouseEvent;
 import cz.cvut.czm.upf.core.events.mouse.MouseWheelEvent;
 import cz.cvut.czm.upf.core.geometry.Geometry;
+import cz.cvut.czm.upf.core.media.Color;
 import cz.cvut.czm.upf.core.media.Rect;
 import cz.cvut.czm.upf.core.media.Vector;
 
 public class UIElement<T extends UIElement> extends Visual<T> {
+
+
+    //region Constructors
+    public UIElement(){}
+    public UIElement(UIElement objectTocopy)
+    {
+        super(objectTocopy);
+    }
+    //endregion
 
     //region Events
     public EventListener<KeyEvent> KeyUp, KeyUpPreview;
@@ -52,7 +62,7 @@ public class UIElement<T extends UIElement> extends Visual<T> {
     }
 
     protected Rect bounds;
-    public void measurePass(Vector availibleSize)
+    public final void measure(Vector availibleSize)
     {
         if(!visible)
             measuredSize=new Vector();
@@ -60,19 +70,20 @@ public class UIElement<T extends UIElement> extends Visual<T> {
             measuredSize=Vector.createSmallestByAxis(clip.getBounds().getSize(),availibleSize);
         else
             measuredSize=availibleSize;
-        measure(availibleSize);
+        measurePass(availibleSize);
     }
-    protected void measure(Vector availibleSize) {}
+    protected void measurePass(Vector availibleSize) {}
 
-    public void arrangePass(Rect desiredLocation)
+    public final void arrange(Rect desiredLocation)
     {
-        arrange(bounds);
+        arrangePass(bounds);
     }
-    protected void arrange(Rect desiredLocation) {}
+    protected void arrangePass(Rect desiredLocation) {}
     //endregion
 
-
+    //region Visibility
     protected boolean visible = true;
+    protected Color bgColor = null;
     public T setVisible(boolean visibility)
     {
         this.visible=visibility;
@@ -82,5 +93,17 @@ public class UIElement<T extends UIElement> extends Visual<T> {
     {
         return visible;
     }
+
+    public T setBackgroundColor(Color color)
+    {
+        this.bgColor=color;
+        return getThis();
+    }
+    public Color getBackgroundColor()
+    {
+        return this.bgColor;
+    }
+
+    //endregion
 
 }

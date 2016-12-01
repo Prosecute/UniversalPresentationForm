@@ -13,12 +13,33 @@ import cz.cvut.czm.upf.core.dependency.DependencyObject;
 import cz.cvut.czm.upf.core.media.*;
 import cz.cvut.czm.upf.core.media.transforms.Transform;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public abstract class Visual<T extends Visual> extends DependencyObject<T> {
+
+    //region Constructors
+    public Visual(){}
+    public Visual(Visual objectTocopy)
+    {
+        super(objectTocopy);
+        for(Object visual:objectTocopy.visualChilds)
+            try {
+                visualChilds.add((Visual) visual.getClass().getConstructor(visual.getClass()).newInstance(visual));
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+    }
+    //endregion
 
     private Visual visualParrent;
     private List<Visual> visualChilds=new ArrayList<Visual>();
@@ -77,16 +98,19 @@ public abstract class Visual<T extends Visual> extends DependencyObject<T> {
     }
 
 
-    public RenderJob.RenderJobManager Render = new RenderJob.RenderJobManager();
+    public RenderJob.RenderJobManager renderer = new RenderJob.RenderJobManager();
 
-    protected void render(DrawingContext dc)
+    public final void render(DrawingContext dc)
     {
         if(buffer==null)
             buffer=dc.GetConfiguration().createImage((int)renderRect.width,(int)renderRect.height);
-        Render.render(buffer.getDrawingContext());
+        renderer.render(buffer.getDrawingContext());
         dc.DrawImage(null,buffer,renderRect);
         for(Visual visual:visualChilds)
             visual.render(dc);
+    }
+    public Rect getRenderRect() {
+        return renderRect;
     }
 
 }

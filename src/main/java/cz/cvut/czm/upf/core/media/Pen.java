@@ -11,6 +11,16 @@ package cz.cvut.czm.upf.core.media;
 
 public class Pen {
 
+    public Pen(Brush brush)
+    {
+        this(brush,1f);
+    }
+    public Pen(Brush brush, float thickness)
+    {
+        this.brush=brush;
+        this.thickness=thickness;
+    }
+
     public float thickness;
     public Brush brush;
 }

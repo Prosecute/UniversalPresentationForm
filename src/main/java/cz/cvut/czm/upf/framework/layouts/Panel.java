@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.presentation.layouts;
+package cz.cvut.czm.upf.framework.layouts;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,13 +9,12 @@ package cz.cvut.czm.upf.presentation.layouts;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.core.media.Rect;
 import cz.cvut.czm.upf.core.media.Vector;
-import cz.cvut.czm.upf.presentation.PresentationElement;
+import cz.cvut.czm.upf.framework.FrameworkElement;
 import cz.cvut.czm.upf.core.UIElement;
 import cz.cvut.czm.upf.core.UIElementList;
 
-public abstract class Panel<T extends Panel> extends PresentationElement<T> {
+public abstract class Panel<T extends Panel> extends FrameworkElement<T> {
     private final UIElementList list;
 
     public Panel()

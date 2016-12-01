@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.presentation.layouts;
+package cz.cvut.czm.upf.framework.control;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,5 +9,10 @@ package cz.cvut.czm.upf.presentation.layouts;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-public class Canvas  extends Panel{
+public class TextBox<T extends TextBox> extends TextBoxBase<T> {
+
+    public TextBox()
+    {
+
+    }
 }

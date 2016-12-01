@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.presentation.control;
+package cz.cvut.czm.upf.framework.layouts;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,8 +9,5 @@ package cz.cvut.czm.upf.presentation.control;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.presentation.PresentationElement;
-
-
-public class Control<T extends Control> extends PresentationElement<T> {
+public class Canvas  extends Panel{
 }

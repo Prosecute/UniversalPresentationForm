@@ -1,4 +1,4 @@
-package cz.cvut.czm.upf.core;
+package cz.cvut.czm.upf.framework;
 ///////////////////////////////////////////////////////////////////////////////
 //
 //Author: Jiri Fryc
@@ -9,20 +9,5 @@ package cz.cvut.czm.upf.core;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-public class FluentObject<T extends FluentObject> extends Object {
-
-    public FluentObject()
-    {
-
-    }
-    public FluentObject(T objectToCopy)
-    {
-
-    }
-
-    public T getThis()
-    {
-        return (T)this;
-    }
-
+public class FrameworkTemplate {
 }

@@ -10,13 +10,13 @@ package cz.cvut.czm.upf.core.media;
 
 
 public class Color {
-    protected byte[] color=new byte[4];
+    protected float[] color=new byte[4];
 
-    public Color(int r,int g,int b)
+    public Color(float r,float g,float b)
     {
-        this.color=tobyteArray(r,g,b,0xFF);
+        this.color=tobyteArray(r,g,b,1.0f);
     }
-    public Color(int r,int g,int b,int a)
+    public Color(float r,float g,float b,float a)
     {
         this.color=tobyteArray(r,g,b,a);
     }
@@ -39,19 +39,19 @@ public class Color {
         return new Color(this.color);
     }
 
-    public int red()
+    public float red()
     {
         return color[0];
     }
-    public int green()
+    public float green()
     {
         return color[1];
     }
-    public int blue()
+    public float blue()
     {
         return color[2];
     }
-    public int alpha()
+    public float alpha()
     {
         return color[3];
     }
@@ -70,11 +70,11 @@ public class Color {
 
 
 
-    public static byte[] tobyteArray(int r,int g,int b,int a)
+    public static float[] tobyteArray(int r,int g,int b,int a)
     {
         return new byte[]{(byte)r,(byte)g,(byte)b,(byte)a};
     }
-    public static byte[] tobyteArray(int rgba)
+    public static float[] tobyteArray(int rgba)
     {
         return new byte[]{(byte)(rgba >> 24 & 0xFF),(byte)(rgba >> 16 & 0xFF),(byte)(rgba >> 8 & 0xFF),(byte)(rgba & 0xFF)};
     }

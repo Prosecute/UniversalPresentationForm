@@ -9,20 +9,7 @@ package cz.cvut.czm.upf.core;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-public class FluentObject<T extends FluentObject> extends Object {
+import cz.cvut.czm.upf.core.dependency.*;
 
-    public FluentObject()
-    {
-
-    }
-    public FluentObject(T objectToCopy)
-    {
-
-    }
-
-    public T getThis()
-    {
-        return (T)this;
-    }
-
+public class Animatable<T extends Animatable> extends Freezable<T> {
 }
