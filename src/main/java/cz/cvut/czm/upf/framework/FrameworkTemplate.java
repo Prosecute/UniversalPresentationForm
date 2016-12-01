@@ -9,5 +9,7 @@ package cz.cvut.czm.upf.framework;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-public class FrameworkTemplate {
+import cz.cvut.czm.upf.core.threading.DispatcherObject;
+
+public class FrameworkTemplate<T extends FrameworkTemplate> extends DispatcherObject<T>{
 }

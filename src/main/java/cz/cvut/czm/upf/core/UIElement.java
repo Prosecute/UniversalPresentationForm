@@ -28,6 +28,9 @@ public class UIElement<T extends UIElement> extends Visual<T> {
     public UIElement(UIElement objectTocopy)
     {
         super(objectTocopy);
+        this.KeyUp=objectTocopy.KeyUp;
+        this.KeyUpPreview=objectTocopy.KeyUpPreview;
+        //TODO:
     }
     //endregion
 

@@ -14,9 +14,26 @@ import cz.cvut.czm.upf.core.dependency.DependencyObject;
 import cz.cvut.czm.upf.core.media.*;
 import cz.cvut.czm.upf.core.media.Vector;
 
+import java.awt.*;
+
 public class FrameworkElement<T extends FrameworkElement> extends UIElement<T> {
 
     private volatile DependencyObject parent;
+
+    //region Constructors
+    public FrameworkElement()
+    {}
+    public FrameworkElement(T objectToCopy)
+    {
+        super(objectToCopy);
+        this.width=objectToCopy.width;
+        this.height=objectToCopy.height;
+        this.maxwidth=objectToCopy.maxwidth;
+        //TODO:
+    }
+    //endregion
+
+
 
     public T setParent(DependencyObject parent)
     {

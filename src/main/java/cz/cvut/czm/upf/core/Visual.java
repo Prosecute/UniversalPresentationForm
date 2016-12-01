@@ -28,7 +28,7 @@ public abstract class Visual<T extends Visual> extends DependencyObject<T> {
         super(objectTocopy);
         for(Object visual:objectTocopy.visualChilds)
             try {
-                visualChilds.add((Visual) visual.getClass().getConstructor(visual.getClass()).newInstance(visual));
+                addVisualChild((Visual) visual.getClass().getConstructor(visual.getClass()).newInstance(visual));
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -68,6 +68,7 @@ public abstract class Visual<T extends Visual> extends DependencyObject<T> {
     {
         if(!visualChilds.contains(visual))
             visualChilds.add(visual);
+        visual.setVisualParrent(this);
         return getThis();
     }
 
