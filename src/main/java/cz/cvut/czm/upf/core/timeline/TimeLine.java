@@ -10,6 +10,18 @@ package cz.cvut.czm.upf.core.timeline;
 
 
 import cz.cvut.czm.upf.core.Animatable;
+import cz.cvut.czm.upf.util.time.TimeSpan;
+
 
 public class TimeLine<T extends TimeLine> extends Animatable<T> {
+
+    public volatile boolean autoReverse = false;
+    public volatile TimeSpan beginTime;
+    public volatile float accelerationRatio, decelerationRatio, speedRatio;
+    public volatile Duration duration = new Duration(true);
+    public volatile FillBehavior fillBehavior = FillBehavior.HoldEnd;
+    public volatile String name;
+
+
+    public enum FillBehavior { HoldEnd, Stop}
 }

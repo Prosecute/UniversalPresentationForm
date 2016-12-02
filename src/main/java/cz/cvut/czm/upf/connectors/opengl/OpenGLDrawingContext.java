@@ -42,7 +42,7 @@ public class OpenGLDrawingContext extends DrawingContext {
     {
         switch (brush.type())
         {
-            case "solidColor": gl.glColor4bv(((SolidColorBrush)brush).color.get(),0);
+            case "solidColor": gl.glColor4fv(((SolidColorBrush)brush).color.get(),0);
                 break;
         }
     }

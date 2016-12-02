@@ -10,7 +10,9 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    // https://mvnrepository.com/artifact/org.testng/testng
+    compile group: 'org.testng', name: 'testng', version: '6.8.8'
+
 
 
     compile "org.jogamp.gluegen:gluegen-rt:2.3.1"

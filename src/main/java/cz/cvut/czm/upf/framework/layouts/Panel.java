@@ -29,8 +29,8 @@ public abstract class Panel<T extends Panel> extends FrameworkElement<T> {
     }
 
     @Override
-    protected void measureOverwrite(Vector availableSize) {
-        super.measureOverwrite(availableSize);
+    protected Vector measureOverwrite(Vector availableSize) {
+        return super.measureOverwrite(availableSize);
     }
 
     @Override

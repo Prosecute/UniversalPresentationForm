@@ -9,7 +9,7 @@ package cz.cvut.czm.upf.core.media;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.core.FluentObject;
+import cz.cvut.czm.upf.util.FluentObject;
 
 public class Vector<T extends Vector> extends FluentObject<T> {
     public volatile float x,y;

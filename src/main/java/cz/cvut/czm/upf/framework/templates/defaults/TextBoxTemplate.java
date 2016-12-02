@@ -11,6 +11,5 @@ public class TextBoxTemplate extends ControlTemplate {
     private TextBoxTemplate()
     {
         TextBox textBox = new TextBox();
-        textBox.
     }
 }

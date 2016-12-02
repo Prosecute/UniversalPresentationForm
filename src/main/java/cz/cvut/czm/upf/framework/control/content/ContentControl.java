@@ -34,13 +34,13 @@ public class ContentControl<T extends ContentControl> extends Control<T> {
     //region Sizing
 
     @Override
-    protected void measureOverwrite(Vector availableSize) {
+    protected Vector measureOverwrite(Vector availableSize) {
         if(content==null)
         {
 
         }
-        content.measurePass(availableSize);
-        measuredSize=content.getMeasuredSize();
+        content.measure(availableSize);
+        return content.getMeasuredSize();
     }
 
     @Override

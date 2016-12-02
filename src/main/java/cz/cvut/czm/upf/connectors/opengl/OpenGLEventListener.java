@@ -44,8 +44,8 @@ public class OpenGLEventListener implements GLEventListener {
         final int height=window.window.getHeight();
         clearScreen(drawable);
         UIElement content=window.getContent();
-        content.measurePass(new Vector(width,height));
-        content.arrangePass(new Rect(0,0,width,height));
+        content.measure(new Vector(width,height));
+        content.arrange(new Rect(0,0,width,height));
         content.render(new OpenGLDrawingContext(drawable.getGL(),0,0,width,height));
     }
 

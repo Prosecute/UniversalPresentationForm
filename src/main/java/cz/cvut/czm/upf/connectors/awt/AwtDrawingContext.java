@@ -9,6 +9,7 @@ package cz.cvut.czm.upf.connectors.awt;
 ///////////////////////////////////////////////////////////////////////////////
 
 
+import cz.cvut.czm.upf.core.geometry.Geometry;
 import cz.cvut.czm.upf.core.media.*;
 import cz.cvut.czm.upf.core.media.Image;
 import cz.cvut.czm.upf.core.media.Point;
@@ -30,6 +31,7 @@ public class AwtDrawingContext extends DrawingContext {
 
     public AwtDrawingContext(AwtImage image)
     {
+        super(0,0,0,0); //HACK:
         this.image=image;
         this.g=image.img.getGraphics();
         this.g2=(Graphics2D) image.img.getGraphics();
@@ -54,6 +56,11 @@ public class AwtDrawingContext extends DrawingContext {
     @Override
     public DrawingConfiguration GetConfiguration() {
         return AwtDrawingConfiguration.getDefault();
+    }
+
+    @Override
+    public DrawingContext Clip(Geometry geometry) {
+        return null;
     }
 
     @Override

@@ -9,7 +9,7 @@ package cz.cvut.czm.upf.core.media.transforms;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.core.FluentObject;
+import cz.cvut.czm.upf.util.FluentObject;
 import cz.cvut.czm.upf.core.media.Point;
 import cz.cvut.czm.upf.core.media.Rect;
 

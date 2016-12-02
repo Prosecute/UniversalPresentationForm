@@ -10,28 +10,28 @@ package cz.cvut.czm.upf.core.media;
 
 
 public class Color {
-    protected float[] color=new byte[4];
+    protected float[] color=new float[4];
 
     public Color(float r,float g,float b)
     {
-        this.color=tobyteArray(r,g,b,1.0f);
+        this.color=new float[]{r,g,b,1.0f};
     }
     public Color(float r,float g,float b,float a)
     {
-        this.color=tobyteArray(r,g,b,a);
+        this.color=new float[]{r,g,b,a};
     }
     public Color(String hex)
     {
 
     }
-    public Color(byte[] rgba)
+    public Color(float[] rgba)
     {
         this.color=rgba;
     }
 
     public Color(int rgba)
     {
-        this.color=tobyteArray(rgba);
+        this.color=toFloatArray(rgba);
     }
 
     public Color copy()
@@ -55,28 +55,29 @@ public class Color {
     {
         return color[3];
     }
-    public byte[] get()
+    public float[] get()
     {
         return color;
     }
-    public Color set(int r,int g,int b,int a)
+    public Color set(float r,float g,float b,float a)
     {
+        this.color=new float[]{r,g,b,a};
         return this;
     }
-    public Color set(int r,int g,int b)
+    public Color set(float r,float g,float b)
     {
-        return set(r,g,b,alpha());
+        return set(r,g,b,color[3]);
     }
 
 
 
-    public static float[] tobyteArray(int r,int g,int b,int a)
+    public static float[] toFloatArray(int r,int g,int b,int a)
     {
-        return new byte[]{(byte)r,(byte)g,(byte)b,(byte)a};
+        return new float[]{r/255.0f,g/255.0f,b/255.0f,a/255.0f};
     }
-    public static float[] tobyteArray(int rgba)
+    public static float[] toFloatArray(int rgba)
     {
-        return new byte[]{(byte)(rgba >> 24 & 0xFF),(byte)(rgba >> 16 & 0xFF),(byte)(rgba >> 8 & 0xFF),(byte)(rgba & 0xFF)};
+        return new float[]{(rgba >> 24 & 0xFF)/255.0f,(rgba >> 16 & 0xFF)/255.0f,(rgba >> 8 & 0xFF)/255.0f,(rgba & 0xFF)/255.0f};
     }
     public static int toIntColor(byte r,byte g,byte b,byte a)
     {

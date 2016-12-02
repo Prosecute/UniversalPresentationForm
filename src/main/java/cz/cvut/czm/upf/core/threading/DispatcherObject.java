@@ -9,8 +9,7 @@ package cz.cvut.czm.upf.core.threading;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-import cz.cvut.czm.upf.core.FluentObject;
-import cz.cvut.czm.upf.core.Visual;
+import cz.cvut.czm.upf.util.FluentObject;
 
 public abstract class DispatcherObject<T extends DispatcherObject> extends FluentObject<T> {
     public final Dispatcher dispatcher;
